@@ -12,18 +12,15 @@ public class BaseRope : MonoBehaviour
     private void Start()
     {
         if (nodes[0] != null && nodes[1] != null)
-            RopeStart();
+            SendDataToNodes();
     }
-    public virtual void RopeStart()
-    {
-        SetTransformAccordingToNodes();
-        SendDataToNodes();
-    }
+
     public void InitiateRope(BaseNode n1, BaseNode n2)
     {
         nodes[0] = n1;
         nodes[1] = n2;
-        RopeStart();
+        SendDataToNodes();
+        SetTransformAccordingToNodes() ;
     }
     public BaseNode[] GetNodes()
     {
@@ -44,7 +41,7 @@ public class BaseRope : MonoBehaviour
         nodes[1].AddRope(this);
     }
 
-    private void SetTransformAccordingToNodes()
+    public void SetTransformAccordingToNodes()
     {
         //Set Position According to nodes;
     }

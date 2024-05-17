@@ -9,9 +9,9 @@ public class EditorRope : Editor
         DrawDefaultInspector();
 
         EditorGUI.BeginDisabledGroup(serializedObject.isEditingMultipleObjects);
-        if (GUILayout.Button("ResetRope"))
+        if (GUILayout.Button("ResetTransform"))
         {
-            ((BaseRope)target).RopeStart();
+            ((BaseRope)target).SetTransformAccordingToNodes();
         }
 
         EditorGUI.EndDisabledGroup();

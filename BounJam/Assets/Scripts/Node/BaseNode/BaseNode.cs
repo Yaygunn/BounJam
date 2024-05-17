@@ -8,18 +8,6 @@ public class BaseNode : MonoBehaviour
 
     private void Start()
     {
-        foreach (var rope in RopeDictionary.Keys)
-        {
-            if(rope == null)
-            {
-                RemoveRope(rope);
-                continue;
-            }
-
-            BaseNode[] nodes = rope.GetNodes();
-            if (nodes[0] != this && nodes[1] != this)
-                RemoveRope(rope);
-        }
         ShowCount();
     }
 
@@ -42,6 +30,7 @@ public class BaseNode : MonoBehaviour
     public void RemoveRope(BaseRope rope)
     {
         RopeDictionary.Remove(rope);
+        ShowCount();
     }
 
 }
