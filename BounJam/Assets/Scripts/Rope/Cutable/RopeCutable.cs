@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RopeCutable : BaseRope
 {
+    Color StandartColor;
+    private void Awake()
+    {
+        StandartColor = spriteRenderer.color;
+    }
     public void Cut()
     {
         nodes[0].RemoveRope(this);
@@ -18,5 +23,19 @@ public class RopeCutable : BaseRope
         if (nodes[1].GetConnectedRopeCount() < 2)
             return false;
         return true;
+    }
+
+    public void ColorCut()
+    {
+        spriteRenderer.color = Color.green;
+    }
+    public void ColorUnCutable()
+    {
+        spriteRenderer.color = Color.red;
+    }
+
+    public void ColorStandart()
+    {
+        spriteRenderer.color = StandartColor;
     }
 }

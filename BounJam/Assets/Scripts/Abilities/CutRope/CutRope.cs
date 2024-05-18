@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CutRope : MonoBehaviour, I_Ability
 {
-    [SerializeField] private RopeCutable _currentRope;
+    private RopeCutable _currentRope;
 
     private bool Cutable;
     public void StartAbility()
@@ -52,7 +52,7 @@ public class CutRope : MonoBehaviour, I_Ability
     {
         if (_currentRope == null)
             return;
-
+        _currentRope.ColorStandart();
         _currentRope = null;
         Cutable = false;
     }
@@ -63,5 +63,13 @@ public class CutRope : MonoBehaviour, I_Ability
 
         _currentRope = rope;
         Cutable = _currentRope.IsCutable();
+        if(Cutable)
+        {
+            _currentRope.ColorCut();
+        }
+        else
+        {
+            _currentRope.ColorUnCutable();
+        }
     }
 }
