@@ -11,6 +11,8 @@ public class SpawnRope : MonoBehaviour, I_Ability
 
     [SerializeField] private RopeCursor ropeCursor;
 
+    [SerializeField] private Transform RopeParent;
+
     private void Awake()
     {
         EventHub.E_PlayerNode += GetNodePlayerIsOn;
@@ -51,6 +53,7 @@ public class SpawnRope : MonoBehaviour, I_Ability
         }
         RopeCutable rope = Instantiate(prefabRope);
         rope.InitiateRope(_playerNode, node);
+        rope.transform.SetParent(RopeParent);
     }
 
     IEnumerator RopeAbility()

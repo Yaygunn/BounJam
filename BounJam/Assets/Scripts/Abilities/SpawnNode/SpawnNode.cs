@@ -6,6 +6,8 @@ public class SpawnNode : MonoBehaviour, I_Ability
 {
     [SerializeField] private Node prefabNode;
 
+    [SerializeField] private Transform NodeParent;
+
     private Node _playerNode;
 
     private void Awake()
@@ -39,6 +41,7 @@ public class SpawnNode : MonoBehaviour, I_Ability
     {
         Vector2 mousePos = MouseDetection.Instance.GetMousePosition();
         Node node = Instantiate(prefabNode,mousePos,Quaternion.identity);
+        node.transform.SetParent(NodeParent);
     }
     IEnumerator NodeAbility()
     {
