@@ -36,6 +36,11 @@ public class BaseRope : MonoBehaviour
         return nodes;
     }
 
+    public Vector2 GetRopeDirection()
+    {
+        return (Vector2)(nodes[0].transform.position - nodes[1].transform.position).normalized;
+    }
+
     public BaseNode GetOtherNode(BaseNode node)
     {
         if (nodes[0] == node)
