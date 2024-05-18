@@ -20,12 +20,13 @@ public class SpawnNode : MonoBehaviour, I_Ability
 
     public void StartAbility()
     {
+        EventHub.E_AbilityChange += StopAbility;
         StartCoroutine(NodeAbility());
-
     }
 
     public void StopAbility()
     {
+        EventHub.E_AbilityChange -= StopAbility;
         StopAllCoroutines();
     }
     public void UseAbility()

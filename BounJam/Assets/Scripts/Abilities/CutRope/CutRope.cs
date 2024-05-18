@@ -9,10 +9,12 @@ public class CutRope : MonoBehaviour, I_Ability
     public void StartAbility()
     {
         StartCoroutine(CutUpdate());
+        EventHub.E_AbilityChange += StopAbility;
     }
 
     public void StopAbility()
     {
+        EventHub.E_AbilityChange -= StopAbility;
         StopAllCoroutines();
         _currentRope = null;
         Cutable = false;

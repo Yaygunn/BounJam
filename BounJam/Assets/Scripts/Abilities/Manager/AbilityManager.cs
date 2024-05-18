@@ -14,10 +14,14 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] int CutRight;
     I_Ability _currentAbility;
 
+    private I_Ability[] _abilities; 
+    [SerializeField] int indexAbility;
+
     void Start()
     {
-        _currentAbility = A_SpawnNode;
-        _currentAbility.StartAbility();
+        _abilities = new I_Ability[]{ A_SpawnNode, A_SpawnRope,A_CutRope };
+
+        _abilities[indexAbility].StartAbility();
 
         InputGameplay.Instance.E_LeftClick += UseAbility;
         InputGameplay.Instance.E_RightClick += TryToSwitchAbility;
@@ -31,20 +35,47 @@ public class AbilityManager : MonoBehaviour
 
     private void UseAbility()
     {
-        _currentAbility.UseAbility();
+        _abilities[indexAbility].UseAbility();
     }
 
     private void TryToSwitchAbility()
     {
+        int beginningIndex = indexAbility;
         if (!IsThereAnyRight())
         {
             return;
         }
+        while(true)
+        {
+            IncreaseAbilityIndex();
+            if (IsAbilityHasRight(indexAbility))
+                break;
+        }
+        if(indexAbility == beginningIndex)
+        {
+            return;
+        }
+        
+        
+        StartNextAbility();
+        
+        
+
+    }
+    
+    private void IncreaseAbilityIndex()
+    {
+        indexAbility++;
+        if(indexAbility == 3) 
+        {
+            indexAbility = 0;
+        }
     }
 
-    private void StartNextAbility(int i)
+    private void StartNextAbility()
     {
-
+        EventHub.AbilityChange();
+       //starts
     }
 
     private bool IsThereAnyRight()

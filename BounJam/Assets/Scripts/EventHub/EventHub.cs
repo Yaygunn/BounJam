@@ -8,4 +8,11 @@ public static class EventHub
     {
         E_PlayerNode?.Invoke(node);
     }
+
+    public static event Action E_AbilityChange;
+
+    public static void AbilityChange()
+    {
+        E_AbilityChange?.Invoke();
+    }
 }
