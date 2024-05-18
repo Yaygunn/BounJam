@@ -9,6 +9,8 @@ public class SpawnRope : MonoBehaviour, I_Ability
 
     [SerializeField] private Node _playerNode;
 
+    [SerializeField] private RopeCursor ropeCursor;
+
     private void Awake()
     {
         EventHub.E_PlayerNode += GetNodePlayerIsOn;
@@ -78,7 +80,18 @@ public class SpawnRope : MonoBehaviour, I_Ability
         }
 
         _currentNode = node;
-        // open view change
+
+        foreach (BaseNode Anode in node.GetAllOtherNodes())
+        {
+            if (_playerNode == Anode)
+            {
+                ropeCursor.FailColor();
+                return;
+            }
+        }
+
+        ropeCursor.CorrectColor();
+
     }
 
     private void ForgetPreviousNode()
@@ -86,8 +99,9 @@ public class SpawnRope : MonoBehaviour, I_Ability
         if (_currentNode == null)
             return;
 
-        //close view change
         _currentNode = null;
+
+        ropeCursor.StardartColor();
     }
 }
 

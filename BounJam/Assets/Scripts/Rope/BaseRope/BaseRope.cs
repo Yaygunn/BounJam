@@ -49,7 +49,7 @@ public class BaseRope : MonoBehaviour
         if (HasAddedToNode)
             return;
         HasAddedToNode = true;
-        print("SendData");
+
         nodes[0].AddRope(this);
         nodes[1].AddRope(this);
     }

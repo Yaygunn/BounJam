@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabRope: {fileID: 8593083793254715017, guid: 1a7ac3ddcee504a40bc4c3775fca1fd9, type: 3}
   _playerNode: {fileID: 389202529}
+  ropeCursor: {fileID: 1787345373}
 --- !u!114 &23759193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,6 +3027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787345372}
   - component: {fileID: 1787345371}
+  - component: {fileID: 1787345373}
   m_Layer: 0
   m_Name: RopeCursor
   m_TagString: Untagged
@@ -3100,6 +3102,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1457480090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787345373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787345370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41c44b3b6c0ff445a582ceca087ed27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1867709737
 GameObject:
   m_ObjectHideFlags: 0
