@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BaseNode : MonoBehaviour
 {
-    private Dictionary<BaseRope, Vector2> RopeDictionary = new Dictionary<BaseRope, Vector2>();
+    protected Dictionary<BaseRope, Vector2> RopeDictionary = new Dictionary<BaseRope, Vector2>();
     [SerializeField] int count;
 
     private void Start()

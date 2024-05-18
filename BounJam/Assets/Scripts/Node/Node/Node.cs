@@ -1,18 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node : BaseNode
 {
-    // Start is called before the first frame update
-    void Start()
+    public BaseRope SelectRope(Vector2 direction)
     {
-        
+        direction.Normalize();
+
+        float minDot = float.MaxValue;
+        BaseRope minRope = null;
+
+        foreach(BaseRope rope in RopeDictionary.Keys)
+        {
+            float dot = math.dot(direction, RopeDictionary[rope]);
+            if (dot < minDot)
+            {
+                minDot = dot;
+                minRope = rope;
+            }
+        }
+
+        return minRope;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CharacterEntered(GameObject character)
     {
-        
+        StartCoroutine(TakeCharacterToCenter(character));
+    }
+
+    IEnumerator TakeCharacterToCenter(GameObject character)
+    {
+        float speed = 5;
+  
+        Vector3 direction = transform.position - character.transform.position;
+        while (true)
+        {
+            yield return null;
+            character.transform.position += direction * speed * Time.deltaTime;
+            
+            float dot = math.dot((transform.position-character.transform.position), direction);
+            if (dot <= 0)
+            {
+                character.transform.position = transform.position;
+                CharacterIsOnNode();
+                break;
+            }
+        }
+    }
+    private void CharacterIsOnNode()
+    {
+        print("CharacterIsOnNode");
     }
 }
