@@ -9,6 +9,8 @@ public class BaseRope : MonoBehaviour
 
     public event Action E_RopeCut;
 
+    [SerializeField] float ScaleMultiplyConstant;
+
     private void Start()
     {
         if (nodes[0] != null && nodes[1] != null)
@@ -43,6 +45,12 @@ public class BaseRope : MonoBehaviour
 
     public void SetTransformAccordingToNodes()
     {
-        //Set Position According to nodes;
+        transform.position = nodes[0].transform.position;
+        Vector2 direction = nodes[1].transform.position - nodes[0].transform.position;
+        transform.up = direction;
+
+        Vector3 scale = transform.localScale;
+        scale.y = direction.magnitude * ScaleMultiplyConstant;
+        transform.localScale = scale;
     }
 }
