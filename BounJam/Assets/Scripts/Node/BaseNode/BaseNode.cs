@@ -23,6 +23,15 @@ public class BaseNode : MonoBehaviour
         ShowCount();
     }
 
+    public BaseNode[] GetAllOtherNodes()
+    {
+        List<BaseNode> nodes = new List<BaseNode>();
+        foreach(BaseRope rope in RopeDictionary.Keys) 
+        {
+            nodes.Add(rope.GetOtherNode(this));
+        }
+        return nodes.ToArray();
+    }
     private void ShowCount()
     {
         count = RopeDictionary.Count;

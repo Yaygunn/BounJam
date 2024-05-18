@@ -11,6 +11,11 @@ public class MouseDetection : MonoBehaviour
         _cam = Camera.main;
     }
 
+    public Vector2 GetMousePosition()
+    {
+        return _cam.ScreenToWorldPoint( Input.mousePosition );
+    }
+
     public Node IsNodeUnderMouse()
     {
         Vector3 mousePosition = _cam.ScreenToWorldPoint(Input.mousePosition);
