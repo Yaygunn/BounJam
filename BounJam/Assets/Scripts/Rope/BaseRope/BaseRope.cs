@@ -5,7 +5,7 @@ public class BaseRope : MonoBehaviour
 {
     [field:SerializeField] public bool Walkable {  get; private set; }
 
-    [field: SerializeField] private BaseNode[] nodes = new BaseNode[2];
+    [field: SerializeField] protected BaseNode[] nodes = new BaseNode[2];
 
     public event Action E_RopeCut;
 

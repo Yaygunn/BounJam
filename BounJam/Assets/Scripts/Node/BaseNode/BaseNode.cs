@@ -42,4 +42,9 @@ public class BaseNode : MonoBehaviour
         ShowCount();
     }
 
+    public int GetConnectedRopeCount()
+    {
+        return RopeDictionary.Count;
+    }
+
 }
