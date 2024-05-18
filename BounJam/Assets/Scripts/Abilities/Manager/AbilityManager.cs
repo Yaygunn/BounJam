@@ -8,7 +8,6 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] SpawnRope A_SpawnRope;
     [SerializeField] CutRope A_CutRope;
 
-
     [SerializeField] int NodeRight;
     [SerializeField] int RopeRight;
     [SerializeField] int CutRight;
@@ -26,7 +25,6 @@ public class AbilityManager : MonoBehaviour
         InputGameplay.Instance.E_LeftClick += UseAbility;
         InputGameplay.Instance.E_RightClick += TryToSwitchAbility;
     }
-
     private void OnDestroy()
     {
         InputGameplay.Instance.E_LeftClick -= UseAbility;
@@ -75,7 +73,7 @@ public class AbilityManager : MonoBehaviour
     private void StartNextAbility()
     {
         EventHub.AbilityChange();
-       //starts
+        _abilities[indexAbility].StartAbility();
     }
 
     private bool IsThereAnyRight()

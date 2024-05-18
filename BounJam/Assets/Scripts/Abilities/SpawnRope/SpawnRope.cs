@@ -47,7 +47,7 @@ public class SpawnRope : MonoBehaviour, I_Ability
             }
         }
         RopeCutable rope = Instantiate(prefabRope);
-        prefabRope.InitiateRope(_playerNode, node);
+        rope.InitiateRope(_playerNode, node);
     }
 
     IEnumerator RopeAbility()
