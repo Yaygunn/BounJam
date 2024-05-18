@@ -9,6 +9,7 @@ public class CutRope : MonoBehaviour, I_Ability
     public void StartAbility()
     {
         StartCoroutine(CutUpdate());
+        CursorManager.Instance.ChangeCursorState(E_CursorState.makas);
         EventHub.E_AbilityChange += StopAbility;
     }
 

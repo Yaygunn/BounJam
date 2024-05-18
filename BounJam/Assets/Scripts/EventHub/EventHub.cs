@@ -15,4 +15,17 @@ public static class EventHub
     {
         E_AbilityChange?.Invoke();
     }
+
+    public static event Action E_GamePlay;
+
+    public static void GamePlay()
+    {
+        E_GamePlay?.Invoke();
+    }
+    public static event Action E_UI;
+
+    public static void UI()
+    {
+        E_UI?.Invoke();
+    }
 }

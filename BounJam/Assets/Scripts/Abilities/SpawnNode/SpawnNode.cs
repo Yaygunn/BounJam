@@ -21,6 +21,7 @@ public class SpawnNode : MonoBehaviour, I_Ability
     public void StartAbility()
     {
         EventHub.E_AbilityChange += StopAbility;
+        CursorManager.Instance.ChangeCursorState(E_CursorState.node);
         StartCoroutine(NodeAbility());
     }
 
