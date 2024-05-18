@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RightClickMouse",
+                    "type": "Button",
+                    "id": "7c251e7a-3ceb-4c0a-8456-78796749847a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "df8665c1-8037-4e8e-a1cb-ae4914884c11",
@@ -219,6 +228,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54a2340b-d03d-499c-be9e-c003393e200a",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClickMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

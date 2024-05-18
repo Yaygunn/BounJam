@@ -28,10 +28,7 @@ public class MouseDetection : MonoBehaviour
  
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("Hit object on layer: " + hit.collider.gameObject.name); 
-                                                                               
             return hit.collider.GetComponentInParent<Node>();                                                          
-                                                                                                              
         }
  
         return null;
@@ -49,10 +46,7 @@ public class MouseDetection : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("Hit object on layer: " + hit.collider.gameObject.name);
-
             return hit.collider.GetComponentInParent<RopeCutable>();
-
         }
 
         return null;

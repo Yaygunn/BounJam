@@ -64,6 +64,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""RightClickMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c251e7a-3ceb-4c0a-8456-78796749847a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""df8665c1-8037-4e8e-a1cb-ae4914884c11"",
@@ -243,6 +252,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54a2340b-d03d-499c-be9e-c003393e200a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClickMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -373,6 +393,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_GamePlay_Sprint = m_GamePlay.FindAction("Sprint", throwIfNotFound: true);
         m_GamePlay_GoMenu = m_GamePlay.FindAction("GoMenu", throwIfNotFound: true);
         m_GamePlay_LeftClickMouse = m_GamePlay.FindAction("LeftClickMouse", throwIfNotFound: true);
+        m_GamePlay_RightClickMouse = m_GamePlay.FindAction("RightClickMouse", throwIfNotFound: true);
         m_GamePlay_Reload = m_GamePlay.FindAction("Reload", throwIfNotFound: true);
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
         m_GamePlay_Inventory = m_GamePlay.FindAction("Inventory", throwIfNotFound: true);
@@ -450,6 +471,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Sprint;
     private readonly InputAction m_GamePlay_GoMenu;
     private readonly InputAction m_GamePlay_LeftClickMouse;
+    private readonly InputAction m_GamePlay_RightClickMouse;
     private readonly InputAction m_GamePlay_Reload;
     private readonly InputAction m_GamePlay_Interact;
     private readonly InputAction m_GamePlay_Inventory;
@@ -462,6 +484,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_GamePlay_Sprint;
         public InputAction @GoMenu => m_Wrapper.m_GamePlay_GoMenu;
         public InputAction @LeftClickMouse => m_Wrapper.m_GamePlay_LeftClickMouse;
+        public InputAction @RightClickMouse => m_Wrapper.m_GamePlay_RightClickMouse;
         public InputAction @Reload => m_Wrapper.m_GamePlay_Reload;
         public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
         public InputAction @Inventory => m_Wrapper.m_GamePlay_Inventory;
@@ -487,6 +510,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @LeftClickMouse.started += instance.OnLeftClickMouse;
             @LeftClickMouse.performed += instance.OnLeftClickMouse;
             @LeftClickMouse.canceled += instance.OnLeftClickMouse;
+            @RightClickMouse.started += instance.OnRightClickMouse;
+            @RightClickMouse.performed += instance.OnRightClickMouse;
+            @RightClickMouse.canceled += instance.OnRightClickMouse;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
@@ -515,6 +541,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @LeftClickMouse.started -= instance.OnLeftClickMouse;
             @LeftClickMouse.performed -= instance.OnLeftClickMouse;
             @LeftClickMouse.canceled -= instance.OnLeftClickMouse;
+            @RightClickMouse.started -= instance.OnRightClickMouse;
+            @RightClickMouse.performed -= instance.OnRightClickMouse;
+            @RightClickMouse.canceled -= instance.OnRightClickMouse;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
@@ -658,6 +687,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnGoMenu(InputAction.CallbackContext context);
         void OnLeftClickMouse(InputAction.CallbackContext context);
+        void OnRightClickMouse(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);

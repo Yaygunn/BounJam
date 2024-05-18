@@ -61,6 +61,8 @@ public class InputGameplay : Inputs.IGamePlayActions
 
     public Action E_GoMenu;
 
+    public Action E_RightClick;
+
     #endregion
 
     void Inputs.IGamePlayActions.OnMove(InputAction.CallbackContext context)
@@ -109,5 +111,10 @@ public class InputGameplay : Inputs.IGamePlayActions
     void Inputs.IGamePlayActions.OnRotate(InputAction.CallbackContext context)
     {
         E_Rotate?.Invoke(context.action.ReadValue<Vector2>());
+    }
+    void Inputs.IGamePlayActions.OnRightClickMouse(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_RightClick?.Invoke();
     }
 }
