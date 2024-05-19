@@ -33,6 +33,10 @@ public class AbilityManager : MonoBehaviour
         InputGameplay.Instance.E_RightClick += TryToSwitchAbility;
         ShowCutRight();
     }
+    public void CloseAll()
+    {
+        _abilities[indexAbility].StopAbility();
+    }
     private void OnDestroy()
     {
         InputGameplay.Instance.E_LeftClick -= UseAbility;

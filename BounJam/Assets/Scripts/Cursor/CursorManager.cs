@@ -11,6 +11,7 @@ public class CursorManager : MonoBehaviour
     [SerializeField] private GameObject MakasCursor;
     [SerializeField] private GameObject NodeCursor;
     [SerializeField] private GameObject RopeCursor;
+    bool alive = true;
 
     private void Awake()
     {
@@ -19,8 +20,10 @@ public class CursorManager : MonoBehaviour
     }
     private void Update()
     {
-        ParentCursor.transform.position = MouseDetection.Instance.GetMousePosition();
+        if(alive)
+            ParentCursor.transform.position = MouseDetection.Instance.GetMousePosition();
     }
+    
     private void UIMod()
     {
         ChangeCursor(UICursor);
@@ -66,5 +69,10 @@ public class CursorManager : MonoBehaviour
     private void HideCursor()
     {
         Cursor.visible = false;
+    }
+    public void Death()
+    {
+        Destroy(ParentCursor);
+        alive = false;
     }
 }

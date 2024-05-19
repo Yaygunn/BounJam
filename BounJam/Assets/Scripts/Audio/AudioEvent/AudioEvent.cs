@@ -5,9 +5,9 @@ public class AudioEvent : ScriptableObject
 {
     public AudioClip[] clips;
 
-    [Range(0f, 2f)]
+    [Range(0f, 10f)]
     public float volume = 1;
-    [Range(0f, 2f)]
+    [Range(0f, 10f)]
     public float maxVolume = 1;
 
     [Range(0f, 2f)]
