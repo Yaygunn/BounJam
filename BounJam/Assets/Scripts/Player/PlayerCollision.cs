@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -11,8 +12,16 @@ public class PlayerCollision : MonoBehaviour
         {
             if (movement.currentNode == null)
             {
-                movement.StartNodeMovement(collision.GetComponent<Node>());
+                if (movement.currentRope.GetNodes().Contains(collision.GetComponent<Node>()))
+                {
+                    movement.StartNodeMovement(collision.GetComponent<Node>());
+                }
             }
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            EndGame.Instance.PlayerDeath();
         }
     }
 

@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private E_PlayerMoveState _playerMoveState;
 
+    bool controlDirection;
+
     private void Awake()
     {
         Instance = this;
@@ -48,7 +50,7 @@ public class Movement : MonoBehaviour
         currentRope = rope;
         Vector2 RopeDirection = rope.GetRopeDirection();
         Vector2 MoveDirection;
-
+        Invoke("StartControlDirection", 0.03f);
         while (true)
         {
             if (math.dot(RopeDirection, _inputDirection) < 0)
@@ -59,7 +61,7 @@ public class Movement : MonoBehaviour
             {
                 MoveDirection = RopeDirection;
             }
-            if(currentNode != null)
+            if(currentNode != null && controlDirection)
             {
                 if(math.dot(MoveDirection, GetOtherNodeDirection()) < 0)
                 {
@@ -133,6 +135,7 @@ public class Movement : MonoBehaviour
     }
     private IEnumerator NodeDecision()
     {
+        controlDirection = false;
         while (true)
         {
             yield return null;
@@ -145,6 +148,10 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void StartControlDirection()
+    {
+        controlDirection = true;
+    }
     public void TryEmptyNode(Node node)
     {
         if(currentNode == node)
