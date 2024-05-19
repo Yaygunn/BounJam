@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
+    public static AbilityManager Instance { get; private set; } 
     [SerializeField] SpawnNode A_SpawnNode;
     [SerializeField] SpawnRope A_SpawnRope;
     [SerializeField] CutRope A_CutRope;
@@ -16,6 +17,10 @@ public class AbilityManager : MonoBehaviour
     private I_Ability[] _abilities; 
     [SerializeField] int indexAbility;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         _abilities = new I_Ability[]{ A_SpawnNode, A_SpawnRope,A_CutRope };
@@ -39,10 +44,7 @@ public class AbilityManager : MonoBehaviour
     private void TryToSwitchAbility()
     {
         int beginningIndex = indexAbility;
-        if (!IsThereAnyRight())
-        {
-            return;
-        }
+ 
         while(true)
         {
             IncreaseAbilityIndex();
@@ -83,7 +85,11 @@ public class AbilityManager : MonoBehaviour
 
     private bool IsAbilityHasRight(int index)
     {
-        return true;
+        if(index !=2)
+            return true;
+        if (CutRight > 0)
+            return true;
+        return false;
         if(index == 0)
         {
             if (NodeRight > 0)
@@ -107,5 +113,20 @@ public class AbilityManager : MonoBehaviour
             }
             return false;
         
+    }
+
+    public void JustCut()
+    {
+        CutRight--;
+        if(CutRight == 0)
+        {
+            _abilities[indexAbility].StopAbility();
+            TryToSwitchAbility();
+        }
+    }
+
+    public void GetResource()
+    {
+        CutRight++;
     }
 }

@@ -53,6 +53,7 @@ public class CutRope : MonoBehaviour, I_Ability
     private void Cut()
     {
         _currentRope.Cut();
+        AbilityManager.Instance.JustCut();
     }
     private void FotgetPrevious()
     {
