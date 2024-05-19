@@ -21,7 +21,7 @@ public class Node : BaseNode
                 minRope = rope;
             }
         }
-        if(minDot>0.1)
+        if (minDot > -0.5f) 
             return minRope;
         return null;
     }
