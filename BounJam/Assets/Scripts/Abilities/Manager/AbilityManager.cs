@@ -83,6 +83,7 @@ public class AbilityManager : MonoBehaviour
     {
         EventHub.AbilityChange();
         _abilities[indexAbility].StartAbility();
+        AudioManager.Instance.Changeit();
     }
 
     private bool IsThereAnyRight()

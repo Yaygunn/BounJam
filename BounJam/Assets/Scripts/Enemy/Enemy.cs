@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour
     private void Death()
     {
         KillCounter.Instance.EnemyDied();
+        AudioManager.Instance.EnemyDied();
         Destroy(gameObject);
     }
 }

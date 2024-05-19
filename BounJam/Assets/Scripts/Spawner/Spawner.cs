@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -40,10 +41,10 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnResource()
     {
         yield return new WaitForSeconds(3);
+            float spawntime = 13;
         while (true)
         {
             SpawnAResource();
-            float spawntime = 13;
             yield return new WaitForSeconds(spawntime);
         }
     }
@@ -55,10 +56,12 @@ public class Spawner : MonoBehaviour
     IEnumerator EnemySpawning()
     {
         yield return new WaitForSeconds(3);
+        float spawntime = 7;
         while (true)
         {
             SpawnEnemy() ;
-            float spawntime = 8;
+            spawntime -= 0.2f;
+            spawntime = math.max(spawntime, 4.5f);
             yield return new WaitForSeconds(spawntime);
         }
     }
@@ -76,12 +79,12 @@ public class Spawner : MonoBehaviour
     private Vector3 DecidePosition(BaseRope rope)
     {
         BaseNode[] nodes = rope.GetNodes();
-        float rand = Random.Range(0.2f, 0.8f);
+        float rand = UnityEngine.Random.Range(0.2f, 0.8f);
         return Vector3.Lerp(nodes[0].transform.position, nodes[1].transform.position, rand);
     }
 
     private BaseRope SelectRandomRope()
     {
-        return ropeList[Random.Range(0,ropeList.Count)];
+        return ropeList[UnityEngine.Random.Range(0,ropeList.Count)];
     }
 }

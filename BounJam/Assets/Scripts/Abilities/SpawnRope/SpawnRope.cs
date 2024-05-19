@@ -89,6 +89,7 @@ public class SpawnRope : MonoBehaviour, I_Ability
             return;
         }
 
+        AudioManager.Instance.HoverOn();
         _currentNode = node;
 
         foreach (BaseNode Anode in node.GetAllOtherNodes())
@@ -110,6 +111,7 @@ public class SpawnRope : MonoBehaviour, I_Ability
             return;
 
         _currentNode = null;
+        AudioManager.Instance.Hoverof();
 
         ropeCursor.StardartColor();
     }

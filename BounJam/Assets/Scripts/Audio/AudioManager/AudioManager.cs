@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource MusicSource;
     [SerializeField] private AudioSource SfxSource;
+    [SerializeField] private AudioSource CollectSource;
+    [SerializeField] private AudioSource EnemySource;
 
     [SerializeField] private AudioEvent musicClip; 
     
@@ -14,6 +16,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioEvent hoverof;
     [SerializeField] private AudioEvent success;
     [SerializeField] private AudioEvent fail;
+    [SerializeField] private AudioEvent Change;
+    [SerializeField] private AudioEvent Collect;
+    [SerializeField] private AudioEvent Die;
+    
 
 
     private void Awake()
@@ -35,8 +41,17 @@ public class AudioManager : MonoBehaviour
 
     public void GetResource()
     {
-
+        Collect.Play(CollectSource);
     }
+    public void EnemyDied()
+    {
+        Die.Play(EnemySource);
+    }
+    public void Changeit()
+    {
+        Change.Play(CollectSource);
+    }
+    
 
     public void FailSound()
     {
