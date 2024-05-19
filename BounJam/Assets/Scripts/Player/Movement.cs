@@ -150,7 +150,6 @@ public class Movement : MonoBehaviour
         if(currentNode == node)
         {
             currentNode = null;
-            print("EmptyCurrentNode");
         }
     }
 }

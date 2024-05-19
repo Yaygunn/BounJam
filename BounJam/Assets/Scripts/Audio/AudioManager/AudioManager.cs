@@ -7,10 +7,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource MusicSource;
     [SerializeField] private AudioSource SfxSource;
 
-    [SerializeField] private AudioClip musicClip; 
+    [SerializeField] private AudioEvent musicClip; 
     
     [Header("Sfx")]
-    [SerializeField] private bool musicPlaying;
+    [SerializeField] private AudioEvent hoverOn;
+    [SerializeField] private AudioEvent hoverof;
+    [SerializeField] private AudioEvent success;
+    [SerializeField] private AudioEvent fail;
+
 
     private void Awake()
     {
@@ -29,11 +33,28 @@ public class AudioManager : MonoBehaviour
         StartMusic();
     }
 
+    public void FailSound()
+    {
+        fail.Play(SfxSource);
+    }
+    public void Success()
+    {
+        success.Play(SfxSource);
+    }
+
+    public void HoverOn()
+    {
+        hoverOn.Play(SfxSource);
+    }
+    public void Hoverof()
+    {
+        hoverof.Play(SfxSource);
+    }
     private void StartMusic()
     {
-        MusicSource.clip = musicClip;
+        musicClip.Play(MusicSource);
         MusicSource.loop = true;
 
-        MusicSource.Play();
+        
     }
 }

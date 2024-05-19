@@ -1804,8 +1804,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 839063649}
   SfxSource: {fileID: 938501210}
-  musicClip: {fileID: 8300000, guid: 52db706f347b1104eb337eea6ec54a82, type: 3}
-  musicPlaying: 0
+  musicClip: {fileID: 11400000, guid: ad81a932baf76194aacbbed5a82a6bd3, type: 2}
+  hoverOn: {fileID: 11400000, guid: 76c0514f58a985246a551f31424b210c, type: 2}
+  hoverof: {fileID: 11400000, guid: a8bbf5e0d069c48409c554d4b960e130, type: 2}
+  success: {fileID: 11400000, guid: cebfc0e5c304db541b1e0b1f37effbde, type: 2}
+  fail: {fileID: 11400000, guid: 1040b82f2b439a74184aa22f14d633a1, type: 2}
 --- !u!4 &938501212
 Transform:
   m_ObjectHideFlags: 0
