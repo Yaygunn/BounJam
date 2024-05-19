@@ -21,7 +21,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            EndGame.Instance.PlayerDeath();
+            if(collision.GetComponent<Enemy>().IsAlive)
+                EndGame.Instance.PlayerDeath();
         }
     }
 

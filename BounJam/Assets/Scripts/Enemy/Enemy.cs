@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private Vector3 direction;
     private BaseNode targetNode;
     private BaseRope currentrope;
+    public bool IsAlive {  get; private set; }
     void Start()
     {
         BaseColor = spriteRenderer.color;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     }
     public void StartMove()
     {
+        IsAlive = true;
         spriteRenderer.color = BaseColor;
 
         StartCoroutine(Move());
