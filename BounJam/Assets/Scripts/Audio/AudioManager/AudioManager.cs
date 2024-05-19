@@ -33,6 +33,11 @@ public class AudioManager : MonoBehaviour
         StartMusic();
     }
 
+    public void GetResource()
+    {
+
+    }
+
     public void FailSound()
     {
         fail.Play(SfxSource);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class AbilityManager : MonoBehaviour
 
     private I_Ability[] _abilities; 
     [SerializeField] int indexAbility;
+    [SerializeField] TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class AbilityManager : MonoBehaviour
 
         InputGameplay.Instance.E_LeftClick += UseAbility;
         InputGameplay.Instance.E_RightClick += TryToSwitchAbility;
+        ShowCutRight();
     }
     private void OnDestroy()
     {
@@ -118,6 +121,7 @@ public class AbilityManager : MonoBehaviour
     public void JustCut()
     {
         CutRight--;
+        ShowCutRight();
         if(CutRight == 0)
         {
             _abilities[indexAbility].StopAbility();
@@ -128,5 +132,10 @@ public class AbilityManager : MonoBehaviour
     public void GetResource()
     {
         CutRight++;
+        ShowCutRight();
+    }
+    private void ShowCutRight()
+    {
+        text.text = CutRight.ToString();
     }
 }
