@@ -46,6 +46,24 @@ public class CutRope : MonoBehaviour, I_Ability
                 FotgetPrevious();
                 StartNewRope(rope);
             }
+            else
+            {
+                if(_currentRope != null)
+                {
+                    if (Cutable != IsCutable(rope))
+                    {
+                        Cutable = IsCutable(rope);
+                        if (Cutable)
+                        {
+                            _currentRope.ColorCut();
+                        }
+                        else
+                        {
+                            _currentRope.ColorUnCutable();
+                        }
+                    }
+                }          
+            }
             yield return null;
         }
     }
@@ -69,7 +87,7 @@ public class CutRope : MonoBehaviour, I_Ability
             return;
 
         _currentRope = rope;
-        Cutable = _currentRope.IsCutable();
+        Cutable = IsCutable(rope);
         if(Cutable)
         {
             _currentRope.ColorCut();
@@ -78,5 +96,21 @@ public class CutRope : MonoBehaviour, I_Ability
         {
             _currentRope.ColorUnCutable();
         }
+    }
+
+    private bool IsCutable(BaseRope rope)
+    {
+        if(Movement.Instance.currentRope == rope)
+            return false;
+
+        /*Node node = Movement.Instance.currentNode;
+        if (node != null)
+        {
+            if (node.GetAllRopes().Contains(rope))
+            {
+                if(node.GetAllRopes().Count)
+            }
+        }*/
+        return true;
     }
 }
