@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
     public void SpawnEnemy()
     {
         GameObject obje = SpawnOnRope(rope, EnemyObject);
-        obje.GetComponent<Enemy>().SetTargetNode(rope.GetNodes()[0]);
+        obje.GetComponent<Enemy>().Initiate( rope);
     }
 
     private GameObject SpawnOnRope(BaseRope rope, GameObject spawnobje)

@@ -13,6 +13,8 @@ public class RopeCutable : BaseRope
     {
         nodes[0].RemoveRope(this);
         nodes[1].RemoveRope(this);
+
+        GetCut();
         Destroy(gameObject);
     }
 

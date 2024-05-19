@@ -76,4 +76,9 @@ public class BaseRope : MonoBehaviour
         scale.y = direction.magnitude * ColliderScaleMultiplyConstant;
         colliderObject.transform.localScale = scale;
     }
+
+    protected void GetCut()
+    {
+        E_RopeCut?.Invoke();
+    }
 }

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     private Vector3 direction;
     private BaseNode targetNode;
+    private BaseRope currentrope;
     void Start()
     {
         BaseColor = spriteRenderer.color;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     public void StartMove()
     {
         spriteRenderer.color = BaseColor;
+
         StartCoroutine(Move());
     }
     IEnumerator Move()
@@ -47,14 +49,23 @@ public class Enemy : MonoBehaviour
         }
         
     }
-    public void SetTargetNode(BaseNode node)
+    public void Initiate(BaseRope rope)
     {
+        BaseNode node = rope.GetNodes()[0];
         direction = (node.transform.position - transform.position).normalized;
         targetNode = node;
+        currentrope = rope;
+        currentrope.E_RopeCut += Death;
     }
 
     private void DecideNewRoad()
     {
+        currentrope.E_RopeCut -= Death;
 
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }
