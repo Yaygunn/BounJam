@@ -38,22 +38,25 @@ public class SpawnRope : MonoBehaviour, I_Ability
     {
         
         Node node = MouseDetection.Instance.IsNodeUnderMouse();
-        if(node == null)
+
+        if(node == null|| Movement.Instance.currentNode == null)
         {
+            AudioManager.Instance.FailSound();
             return;
         }
-
+        
         foreach(BaseNode Anode in node.GetAllOtherNodes())
         {
             if(_playerNode == Anode)
             {
-                print("fail");
+                AudioManager.Instance.FailSound();
                 return;
             }
         }
         RopeCutable rope = Instantiate(prefabRope);
-        rope.InitiateRope(_playerNode, node);
+        rope.InitiateRope(Movement.Instance.currentNode, node);
         rope.transform.SetParent(RopeParent);
+        AudioManager.Instance.Success();
     }
 
     IEnumerator RopeAbility()
