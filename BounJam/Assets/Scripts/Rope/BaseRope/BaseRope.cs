@@ -20,6 +20,7 @@ public class BaseRope : MonoBehaviour
 
     private void Start()
     {
+        Spawner.Instance.AddRope(this);
         if (nodes[0] != null && nodes[1] != null)
             SendDataToNodes();
     }
@@ -79,6 +80,7 @@ public class BaseRope : MonoBehaviour
 
     protected void GetCut()
     {
+        Spawner.Instance.RemoveRope(this);
         E_RopeCut?.Invoke();
     }
 }
