@@ -22,6 +22,8 @@ public class CutRope : MonoBehaviour, I_Ability
     {
         EventHub.E_AbilityChange -= StopAbility;
         StopAllCoroutines();
+        if(_currentRope != null) 
+            _currentRope.ColorStandart();
         _currentRope = null;
         Cutable = false;
     }
@@ -33,6 +35,7 @@ public class CutRope : MonoBehaviour, I_Ability
         }
 
         Cut();
+        AudioManager.Instance.Success();
         
     }
 
@@ -80,12 +83,14 @@ public class CutRope : MonoBehaviour, I_Ability
         _currentRope.ColorStandart();
         _currentRope = null;
         Cutable = false;
+        AudioManager.Instance.Hoverof();
     }
     private void StartNewRope(RopeCutable rope)
     {
         if(rope == null)
             return;
 
+        AudioManager.Instance.HoverOn();
         _currentRope = rope;
         Cutable = IsCutable(rope);
         if(Cutable)
