@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] bool spawn;
     void Start()
     {
-        
+        StartCoroutine(EnemySpawning());
     }
 
     private void Update()
@@ -21,7 +21,15 @@ public class Spawner : MonoBehaviour
             SpawnEnemy();
         }
     }
-
+    IEnumerator EnemySpawning()
+    {
+        yield return new WaitForSeconds(3);
+        while (true)
+        {
+            SpawnEnemy() ;
+            yield return new WaitForSeconds(6);
+        }
+    }
     public void SpawnEnemy()
     {
         GameObject obje = SpawnOnRope(rope, EnemyObject);

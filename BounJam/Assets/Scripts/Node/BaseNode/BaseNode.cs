@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BaseNode : MonoBehaviour
@@ -10,7 +11,10 @@ public class BaseNode : MonoBehaviour
     {
         ShowCount();
     }
-
+    public List<BaseRope> GetAllRopes()
+    {
+        return RopeDictionary.Keys.ToList();
+    }
     public void AddRope(BaseRope rope)
     {
         if (RopeDictionary.ContainsKey(rope))

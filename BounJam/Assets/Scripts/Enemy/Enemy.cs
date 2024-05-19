@@ -60,8 +60,22 @@ public class Enemy : MonoBehaviour
 
     private void DecideNewRoad()
     {
+        StopAllCoroutines();
+
         currentrope.E_RopeCut -= Death;
 
+        List<BaseRope> ropes = targetNode.GetAllRopes();
+        if(ropes.Count>1)
+        {
+            ropes.Remove(currentrope);
+        }
+        currentrope = ropes[UnityEngine.Random.Range(0, ropes.Count)];
+
+        currentrope.E_RopeCut += Death;
+        targetNode = currentrope.GetOtherNode(targetNode);
+        direction = (targetNode.transform.position - transform.position).normalized;
+
+        StartCoroutine(Move());
     }
 
     private void Death()
