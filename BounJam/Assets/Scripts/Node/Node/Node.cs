@@ -9,20 +9,21 @@ public class Node : BaseNode
     {
         direction.Normalize();
 
-        float minDot = float.MaxValue;
+        float minDot = -2;
         BaseRope minRope = null;
 
         foreach(BaseRope rope in RopeDictionary.Keys)
         {
             float dot = math.dot(direction, RopeDictionary[rope]);
-            if (dot < minDot)
+            if (dot > minDot)
             {
                 minDot = dot;
                 minRope = rope;
             }
         }
-
-        return minRope;
+        if(minDot>0.1)
+            return minRope;
+        return null;
     }
 
     public void CharacterEntered(GameObject character)

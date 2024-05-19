@@ -24,14 +24,14 @@ public class SpawnRope : MonoBehaviour, I_Ability
     }
     public void StartAbility()
     {
-        EventHub.E_AbilityChange += StopAbility;
+        EventHub.E_AbilityChange += this.StopAbility;
         CursorManager.Instance.ChangeCursorState(E_CursorState.rope);
         StartCoroutine(RopeAbility());
     }
 
     public void StopAbility()
     {
-        EventHub.E_AbilityChange -= StopAbility;
+        EventHub.E_AbilityChange -= this.StopAbility;
         StopAllCoroutines();
     }
     public void UseAbility()
