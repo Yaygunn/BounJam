@@ -17,6 +17,10 @@ public class SpawnRope : MonoBehaviour, I_Ability
     {
         EventHub.E_PlayerNode += GetNodePlayerIsOn;
     }
+    private void OnDestroy()
+    {
+        EventHub.E_AbilityChange -= this.StopAbility;
+    }
 
     private void GetNodePlayerIsOn(Node node)
     {

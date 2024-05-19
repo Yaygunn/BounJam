@@ -14,6 +14,11 @@ public class SpawnNode : MonoBehaviour, I_Ability
     {
         EventHub.E_PlayerNode += GetNodePlayerIsOn;
     }
+    private void OnDestroy()
+    {
+        EventHub.E_PlayerNode -= GetNodePlayerIsOn;
+        EventHub.E_AbilityChange -= StopAbility;
+    }
 
     private void GetNodePlayerIsOn(Node node)
     {
@@ -34,6 +39,12 @@ public class SpawnNode : MonoBehaviour, I_Ability
     }
     public void UseAbility()
     {
+        if (MouseDetection.Instance.IsNodeUnderMouse())
+        {
+            AudioManager.Instance.FailSound();
+            return;
+        }
+        AudioManager.Instance.Success();
         SpawnNodeOnMousePoint();
     }
 

@@ -6,6 +6,11 @@ public class CutRope : MonoBehaviour, I_Ability
     private RopeCutable _currentRope;
 
     private bool Cutable;
+
+    private void OnDestroy()
+    {
+        EventHub.E_AbilityChange -= StopAbility;
+    }
     public void StartAbility()
     {
         StartCoroutine(CutUpdate());
