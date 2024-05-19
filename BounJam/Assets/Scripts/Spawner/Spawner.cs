@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] BaseRope rope;
     [SerializeField] GameObject spawnObject;
+    [SerializeField] GameObject EnemyObject;
     [SerializeField] bool spawn;
     void Start()
     {
@@ -17,13 +18,19 @@ public class Spawner : MonoBehaviour
         if(spawn)
         {
             spawn = false;
-            SpawnOnRope(rope, spawnObject);
+            SpawnEnemy();
         }
     }
 
-    private void SpawnOnRope(BaseRope rope, GameObject spawnobje)
+    public void SpawnEnemy()
     {
-        Instantiate(spawnObject, DecidePosition(rope), Quaternion.identity);
+        GameObject obje = SpawnOnRope(rope, EnemyObject);
+        obje.GetComponent<Enemy>().SetTargetNode(rope.GetNodes()[0]);
+    }
+
+    private GameObject SpawnOnRope(BaseRope rope, GameObject spawnobje)
+    {
+        return Instantiate(spawnObject, DecidePosition(rope), Quaternion.identity);
     }
     private Vector3 DecidePosition(BaseRope rope)
     {
