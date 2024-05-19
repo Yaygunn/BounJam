@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     private Vector3 DecidePosition(BaseRope rope)
     {
         BaseNode[] nodes = rope.GetNodes();
-        float rand = Random.Range(0.12f, 0.88f);
+        float rand = Random.Range(0.2f, 0.8f);
         return Vector3.Lerp(nodes[0].transform.position, nodes[1].transform.position, rand);
     }
 }
