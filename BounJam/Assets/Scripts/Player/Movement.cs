@@ -107,6 +107,7 @@ public class Movement : MonoBehaviour
         currentRope = null;
         _playerMoveState = E_PlayerMoveState.gocenter;
         currentNode = node;
+        EventHub.PlayerNode(currentNode);
         StopAllCoroutines();
         StartCoroutine(NodeCenterMove(node));
     }
@@ -157,6 +158,7 @@ public class Movement : MonoBehaviour
         if(currentNode == node)
         {
             currentNode = null;
+            EventHub.PlayerNode(currentNode);
         }
     }
 }

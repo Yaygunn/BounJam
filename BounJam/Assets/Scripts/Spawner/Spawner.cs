@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             SpawnAResource();
-            float spawntime = 8;
+            float spawntime = 13;
             yield return new WaitForSeconds(spawntime);
         }
     }
