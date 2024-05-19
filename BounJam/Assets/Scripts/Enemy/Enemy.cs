@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Color IceColor;
+    Color BaseColor;
+    [SerializeField] float IceTime;
     [SerializeField] float speed;
     private Vector3 direction;
     private BaseNode targetNode;
     void Start()
     {
-        
+        BaseColor = spriteRenderer.color;
+        spriteRenderer.color = IceColor;
+        spriteRenderer.enabled = true;
+        Invoke("StartMove", IceTime);
     }
 
     // Update is called once per frame
@@ -20,6 +27,7 @@ public class Enemy : MonoBehaviour
     }
     public void StartMove()
     {
+        spriteRenderer.color = BaseColor;
         StartCoroutine(Move());
     }
     IEnumerator Move()
@@ -41,10 +49,8 @@ public class Enemy : MonoBehaviour
     }
     public void SetTargetNode(BaseNode node)
     {
-        StopAllCoroutines();
         direction = (node.transform.position - transform.position).normalized;
         targetNode = node;
-        StartMove();
     }
 
     private void DecideNewRoad()
