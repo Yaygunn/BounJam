@@ -7,24 +7,16 @@ public class BaseNode : MonoBehaviour
     protected Dictionary<BaseRope, Vector2> RopeDictionary = new Dictionary<BaseRope, Vector2>();
     [SerializeField] int count;
 
-    private void Start()
-    {
-        ShowCount();
-    }
     public List<BaseRope> GetAllRopes()
     {
         return RopeDictionary.Keys.ToList();
     }
-    public void AddRope(BaseRope rope)
+    public void AddRope(BaseRope rope, Vector2 direction)
     {
         if (RopeDictionary.ContainsKey(rope))
             return;
 
-        BaseNode otherEdge = rope.GetOtherNode(this);
-        Vector2 direction = otherEdge.transform.position - this.transform.forward;
-        direction = direction.normalized;
         RopeDictionary.Add(rope, direction);
-        ShowCount();
     }
 
     public BaseNode[] GetAllOtherNodes()
@@ -36,14 +28,10 @@ public class BaseNode : MonoBehaviour
         }
         return nodes.ToArray();
     }
-    private void ShowCount()
-    {
-        count = RopeDictionary.Count;
-    }
+
     public void RemoveRope(BaseRope rope)
     {
         RopeDictionary.Remove(rope);
-        ShowCount();
     }
 
     public int GetConnectedRopeCount()

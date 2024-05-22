@@ -142,6 +142,11 @@ public class Movement : MonoBehaviour
             yield return null;
             if(_inputDirection != Vector2.zero)
             {
+                yield return new WaitForSeconds(0.04f);
+
+                if (_inputDirection == Vector2.zero)
+                    continue;
+
                 BaseRope rope = currentNode.SelectRope(_inputDirection);
                 if(rope != null)
                     StartRopeMovement(rope);

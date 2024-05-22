@@ -56,8 +56,11 @@ public class BaseRope : MonoBehaviour
             return;
         HasAddedToNode = true;
 
-        nodes[0].AddRope(this);
-        nodes[1].AddRope(this);
+        Vector2 direction = nodes[1].transform.position - nodes[0].transform.position;
+        direction.Normalize();
+
+        nodes[0].AddRope(this,direction);
+        nodes[1].AddRope(this,-direction);
     }
 
     public void SetTransformAccordingToNodes()
